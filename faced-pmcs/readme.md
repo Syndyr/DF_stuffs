@@ -3,8 +3,8 @@ Note I'm not packing the materials with this just yet, I will do that when I'm f
 
 Animations to-do
  Cards;
-  Holding, fan                         [act_cards_hold]
-  Shuffle                              [act_cards_shuff]
+  Holding, fan                         [act_cards_hold]\n
+  Shuffle                              [act_cards_shuff]\n
  
  Books;
   Reading, standing                    [act_book_read_stand]
