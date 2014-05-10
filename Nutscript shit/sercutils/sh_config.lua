@@ -6,7 +6,7 @@ sercut.pmcfix = 1
 
 -- Turns 'Flagger' on or off.
 sercut.flagger = 1
-
+sercut.flaggerUpdateMode = 1
 
 -- Turns the 'Drill sergeant CP' on or off(For DarkFraction or other ARP type gamemodes)
 sercut.dsgtCP = 1
@@ -48,6 +48,7 @@ sercut.flagger_customauthurl = "http://derpythemalemare.com"
 /*
 	The groups, what to phase them by, what flags they get, items, money and models.
 	'class name', 'something to identify it on the page', 'what fags to give', 'any weapons?', <How many uses per char, 0 if you only want it to be used only ever once> 'any money', <How many uses per char, 0 if you only want it to be used only ever once>, 'models and such'
+	The defining string shouldn't have '&|&' or '&*&' as strings are sent between your server and my auth server when running in update mode containing all the groups details, this gets stored as is then exploded and such(Note the auth server only uses the classname and identifier string to phase stuff)	
 */
 sercut.flagger_groups = {
 	{"arp_gold",'<span class="row_data"><span style="color:#edd264;">ARP Gold</span></span>', 'pe','weapon_pistol', 1, '1000', 1, models = {{'derp.mdl'},{'derpy.mdl'}}}

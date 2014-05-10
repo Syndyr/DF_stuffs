@@ -9,11 +9,27 @@ sercut = sercut or {}
 	Flagger stuffs.
 */
 if(sercut.flagger==1)then
-
+	function flaggerRequestAuth(url, uid)
+		--Placeholder
+	end
+	
+	function flaggerComSetup(A, G)
+		for I=1, table.Count.(sercut.flagger_groups),1 do
+			for X=1, table.Count(sercut.flagger_groups[I]),1 do
+				sercut.meep = sercut.meep..sercut.flagger_groups[I][X]..'&|&'
+				if(X==table.Count(sercut.flagger_groups[I])then
+					sercut.meep = sercut.meep..'&*&'
+				end
+			end
+			if(I==table.Count(sercut.flagger_groups))then
+				--Placeholder
+			end
+		end
+	end
 end
 
 if(sercut.dsgtCP==1)then
-
+	--Placeholder
 end
 
 /*
