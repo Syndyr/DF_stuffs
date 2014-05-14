@@ -9,20 +9,39 @@ sercut = sercut or {}
 	Flagger stuffs.
 */
 if(sercut.flagger==1)then
-	function flaggerRequestAuth(url, uid)
+	function flaggerRequestAuth(uid)
 		--Placeholder
 	end
-	
-	function flaggerComSetup(A, G)
-		for I=1, table.Count.(sercut.flagger_groups),1 do
-			for X=1, table.Count(sercut.flagger_groups[I]),1 do
-				sercut.meep = sercut.meep..sercut.flagger_groups[I][X]..'&|&'
-				if(X==table.Count(sercut.flagger_groups[I])then
-					sercut.meep = sercut.meep..'&*&'
+	function flaggerComSetup()
+		if(sercut.flaggerUpdateMode==1&&(sercut.flagger_method==1 || sercut.flagger_method==0))then
+			sercut.flaggerCnames = " "
+			sercut.flaggerIdent = " "
+			for I=1,table.Count(sercut.flagger_groups),1 do
+				--Compiling the groups into Class names and their identifiers so the PHP script can have a field day.
+				sercut.flaggerCnames = sercut.flaggerCnames..'||'..string.Replace(string.Replace(string.Replace(sercut.flagger_groups[I][1],"&","(^*)"),"#","(*^)"),";","(^^)")
+				sercut.flaggerIdent = sercut.flaggerIdent..'||'..string.Replace(string.Replace(string.Replace(sercut.flagger_groups[I][2],"&","(^*)"),"#","(*^)"),";","(^^)")
+				print(sercut.flagger_groups[I][1])
+				print(sercut.flagger_groups[I][2])
+				if(I==table.Count(sercut.flagger_groups))then
+					-- Setting up the PHP request stuff.
+					local Debs = sercut.flagger_validater..'?meth=3&comurl='..sercut.flagger_comurl..'&comauth='..sercut.flagger_authid..'&cnames='..sercut.flaggerCnames..'&gidents='..sercut.flaggerIdent..'&oid='..sercut.ownerSid
+					--local Debs = "https://www.google.co.uk/"
+					print(Debs)
+					http:Fetch(Debs,
+					function(code, body)
+						if(string.find(code,"You're now set up!",0,1))then
+							--print("[SercUtils|aFlager]: I'm now set up on the web-side, now to do the local parts!")
+							print(code.." 2")
+						end
+						print(code.." 1")
+					end,
+					function(error) 
+					
+						print("[SercUtils|aFlager]: Someting' went wrong young blawd!")
+						print("[SercUtils|aFlager]: "..error)
+					
+					end)
 				end
-			end
-			if(I==table.Count(sercut.flagger_groups))then
-				--Placeholder
 			end
 		end
 	end
@@ -38,68 +57,68 @@ end
 */
 if(sercut.pmcfix!= 0)then
 
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m1/1/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m1/2/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m1/3/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m1/4/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m1/5/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m1/6/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m1/1/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m1/2/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m1/3/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m1/4/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m1/5/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m1/6/pmc.mld")
 
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m2/1/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m2/2/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m2/3/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m2/4/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m2/5/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m2/6/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m2/1/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m2/2/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m2/3/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m2/4/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m2/5/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m2/6/pmc.mld")
 
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m3/1/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m3/2/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m3/3/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m3/4/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m3/5/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m3/6/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m3/1/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m3/2/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m3/3/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m3/4/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m3/5/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m3/6/pmc.mld")
 
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m4/1/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m4/2/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m4/3/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m4/4/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m4/5/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m4/6/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m4/1/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m4/2/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m4/3/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m4/4/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m4/5/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m4/6/pmc.mld")
 
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m5/1/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m5/2/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m5/3/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m5/4/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m5/5/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m5/6/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m5/1/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m5/2/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m5/3/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m5/4/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m5/5/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m5/6/pmc.mld")
 
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m6/1/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m6/2/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m6/3/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m6/4/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m6/5/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m6/6/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m6/1/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m6/2/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m6/3/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m6/4/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m6/5/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m6/6/pmc.mld")
 
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m7/1/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m7/2/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m7/3/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m7/4/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m7/5/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m7/6/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m7/1/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m7/2/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m7/3/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m7/4/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m7/5/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m7/6/pmc.mld")
 
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m8/1/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m8/2/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m8/3/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m8/4/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m8/5/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m8/6/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m8/1/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m8/2/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m8/3/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m8/4/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m8/5/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m8/6/pmc.mld")
 
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m9/1/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m9/2/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m9/3/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m9/4/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m9/5/pmc.mld")
-	nut.anim.SetModelClass("sercpmc", "models/ser/faced_pmcs/male/m9/6/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m9/1/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m9/2/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m9/3/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m9/4/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m9/5/pmc.mld")
+	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m9/6/pmc.mld")
 	nut.anim.sercpmc = {
 		normal = {
 			idle = {reference, idle_SMG1_Aim},
@@ -156,4 +175,24 @@ end
 
 /*
 	For the acts and such.
+*/
+
+/*
+Code holding cell
+
+Idjit code #1: Wrong place, wrong function, 100 years dungeon!
+
+					for Lo=1,table.Count(sercut.flagger_groups),1 do -- Searching the groups that're echo'd by the script 
+						if(string.find(code,sercut.flagger_groups[Lo][1],0,1))then --Does it have the class name in there?
+							sercut.flaggerFinds = sercut.flaggerFinds..'&*&'..sercut.flagger_groups[Lo][1]
+						end
+						if(Lo == table.Count(sercut.flagger_groups))then
+							if(sercut.flaggerFinds!=nil)then
+								return sercut.flaggerFinds
+							else
+								return 0
+							end
+						end
+					end
+
 */

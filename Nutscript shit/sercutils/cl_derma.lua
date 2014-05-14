@@ -1,12 +1,13 @@
 local PLUGIN = PLUGIN
 local PANEL = {}
 nut.util.Include("sh_config.lua")
-sercut.metaPly = LocalPlayer()
-sercut.metaData = FindMetaTable("Player")
+local metaPly = LocalPlayer()
+local metaData = FindMetaTable("Player")
+sercut = sercut or {}
 if(sercut.flagger==1)then
 	function PANEL:Init()
 		local cont = vgui.Create("DLabel", self)
-		if(sercut.metaPly:IsAdmin() or sercut.metaPly:IsSuperAdmin())then
+		if(metaPly:IsAdmin() or metaPly:IsSuperAdmin())then
 			local help = vgui.Create("DButton", self)
 			local Te = vgui.Create("DTextEntry", self)
 			self:SetPos(ScrW() * 0.375, ScrH() * 0.350)
@@ -29,7 +30,8 @@ if(sercut.flagger==1)then
 				surface.SetDrawColor(255,255,255,0)
 			end
 			help.DoClick = function()
-				FlaggerHelp(1)			
+				FlaggerHelp(1)		
+				flaggerComSetup()
 			end
 			Te:SetParent(self)
 			Te:SetSize(100,15)
