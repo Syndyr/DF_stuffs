@@ -121,52 +121,52 @@ if(sercut.pmcfix!= 0)then
 	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m9/6/pmc.mld")
 	nut.anim.sercpmc = {
 		normal = {
-			idle = {reference, idle_SMG1_Aim},
-			idle_crouch = {Crouch_idleD, Crouch_idleD},
-			walk = {walk_all, walkAIMALL1_ar2},
+			idle = {"reference", "idle_SMG1_Aim"},
+			idle_crouch = {"Crouch_idleD", "Crouch_idleD"},
+			walk = {"walk_all", "walkAIMALL1_ar2"},
 			walk_crouch = {ACT_WALK_CROUCH, ACT_WALK_CROUCH_AIM_RIFLE},
-			run = {run_all_panicked, ACT_RUN_AIM_RIFLE_STIMULATED}
+			run = {"run_all_panicked", ACT_RUN_AIM_RIFLE_STIMULATED}
 		},
 		pistol = {
-			idle = {reference, idle_SMG1_Aim},
-			idle_crouch = {Crouch_idleD, Crouch_idleD},
-			walk = {walk_all, walkAIMALL1_ar2},
+			idle = {"reference", "idle_SMG1_Aim"},
+			idle_crouch = {"Crouch_idleD", "Crouch_idleD"},
+			walk = {"walk_all", "walkAIMALL1_ar2"},
 			walk_crouch = {ACT_WALK_CROUCH, ACT_WALK_CROUCH_AIM_RIFLE},
-			run = {run_all_panicked, ACT_RUN_AIM_RIFLE_STIMULATED},
+			run = {"run_all_panicked", ACT_RUN_AIM_RIFLE_STIMULATED},
 			attack = ACT_GESTURE_RANGE_ATTACK_PISTOL,
 			reload = ACT_RELOAD_PISTOL
 		},
 		smg = {
-			idle = {reference_SMG1_RELAXED, Crouch_idleD},
-			idle_crouch = {Crouch_idleD, Crouch_idleD},
-			walk = {ACT_WALK_RIFLE_RELAXED, walkAIMALL1_ar2},
+			idle = {"reference_SMG1_RELAXED", "Crouch_idleD"},
+			idle_crouch = {"Crouch_idleD", "Crouch_idleD"},
+			walk = {ACT_WALK_RIFLE_RELAXED, "walkAIMALL1_ar2"},
 			walk_crouch = {ACT_WALK_CROUCH, ACT_WALK_CROUCH_AIM_RIFLE},
 			run = {ACT_RUN_RIFLE_RELAXED, ACT_RUN_AIM_RIFLE_STIMULATED},
 			attack = ACT_GESTURE_RANGE_ATTACK_SMG1,
 			reload = ACT_GESTURE_RELOAD_SMG1
 		},
 		shotgun = {
-			idle = {reference_SHOTGUN_RELAXED, Crouch_idleD},
-			idle_crouch = {Crouch_idleD, Crouch_idleD},
-			walk = {ACT_WALK_RIFLE_RELAXED, walkAIMALL1_ar2},
+			idle = {"reference_SHOTGUN_RELAXED", "Crouch_idleD"},
+			idle_crouch = {"Crouch_idleD", "Crouch_idleD"},
+			walk = {ACT_WALK_RIFLE_RELAXED, "walkAIMALL1_ar2"},
 			walk_crouch = {ACT_WALK_CROUCH, ACT_WALK_CROUCH_AIM_RIFLE},
 			run = {ACT_RUN_RIFLE_RELAXED, ACT_RUN_AIM_RIFLE_STIMULATED},
 			attack = ACT_GESTURE_RANGE_ATTACK_SHOTGUN
 		},
 		grenade = {
-			idle = {reference, reference_MANNEDGUN},
-			idle_crouch = {Crouch_idleD, Crouch_idleD},
+			idle = {"reference", "reference_MANNEDGUN"},
+			idle_crouch = {"Crouch_idleD", "Crouch_idleD"},
 			walk = {walk_all, ACT_WALK_AIM_RIFLE},
 			walk_crouch = {ACT_WALK_CROUCH, ACT_WALK_CROUCH_AIM_RIFLE},
-			run = {run_all_panicked, ACT_RUN_AIM_RIFLE_STIMULATED},
+			run = {"run_all_panicked", ACT_RUN_AIM_RIFLE_STIMULATED},
 			attack = ACT_RANGE_ATTACK_THROW
 		},
 		melee = {
-			idle = {reference, idle_SMG1_Aim},
-			idle_crouch = {Crouch_idleD, Crouch_idleD},
-			walk = {walk_all, walkAIMALL1_ar2},
+			idle = {"reference", "idle_SMG1_Aim"},
+			idle_crouch = {"Crouch_idleD", "Crouch_idleD"},
+			walk = {"walk_all", "walkAIMALL1_ar2"},
 			walk_crouch = {ACT_WALK_CROUCH, ACT_WALK_CROUCH_AIM_RIFLE},
-			run = {run_all_panicked, ACT_RUN_AIM_RIFLE_STIMULATED},
+			run = {"run_all_panicked", ACT_RUN_AIM_RIFLE_STIMULATED},
 			attack = ACT_MELEE_ATTACK_SWING
 		},
 		glide = ACT_GLIDE
