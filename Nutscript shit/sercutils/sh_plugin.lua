@@ -6,7 +6,6 @@ nut.util.Include("sh_config.lua")
 local PLUGIN = PLUGIN
 sercut = sercut or {}
 nut.anim = nut.anim or {}
-PLUGIN.sequences = PLUGIN.sequences or {}
 /*
 	Flagger stuffs.
 */
@@ -29,20 +28,9 @@ if(sercut.flagger==1)then
 					local Debs = sercut.flagger_validater..'?meth=3&comurl='..sercut.flagger_comurl..'&comauth='..sercut.flagger_authid..'&cnames='..sercut.flaggerCnames..'&gidents='..sercut.flaggerIdent..'&oid='..sercut.ownerSid
 					--local Debs = "https://www.google.co.uk/"
 					print(Debs)
-					http:Fetch(Debs,
-					function(code, body)
-						if(string.find(code,"You're now set up!",0,1))then
-							--print("[SercUtils|aFlager]: I'm now set up on the web-side, now to do the local parts!")
-							print(code.." 2")
-						end
-						print(code.." 1")
-					end,
-					function(error) 
-					
-						print("[SercUtils|aFlager]: Someting' went wrong young blawd!")
-						print("[SercUtils|aFlager]: "..error)
-					
-					end)
+					net.Start("keith")
+						net.WriteLong(math.Rand(0,999999))
+					net.SendToServer()
 				end
 			end
 		end
@@ -58,39 +46,6 @@ end
 	General fix for the animations.
 */
 if(sercut.pmcfix!= 0)then
-	PLUGIN.sequences["sercpmc"] = {
-		["arrestlow"] = {"arrestidle", true, name = "Arrest Idle"},
-		["lookout"] = {"lookoutidle", true, name = "Lookout"},
-		["cheer"] = {"cheer1", name = "Cheer"},
-		["clap"] = {"cheer2", name = "Clap"},
-		["sitwall"] = {"plazaidle4", true, lean, name = "Sit Wall"},
-		["stand"] = {"d1_t01_breakroom_watchclock", name = "Stand"},
-		["standpockets"] = {"d1_t02_playground_cit2_pockets", true, name = "Stand Pockets"},
-		["showid"] = {"d1_t02_plaza_scan_id", name = "Show ID"},
-		["pant"] = {"d2_coast03_postbattle_idle02", true, name = "Pant"},
-		["leanback"] = {"lean_back", true, lean, name = "Lean Back"},
-		["sit"] = {"sit_ground", true, name = "Sit"},
-		["lying"] = {"Lying_Down", true, name = "Lying"},
-		["examineground"] = {"d1_town05_Daniels_Kneel_Idle", true, name = "Examine Ground"},
-		["injured2"] = {"d1_town05_Wounded_Idle_1", true, name = "Injured 1"},
-		["injured3"] = {"d1_town05_Wounded_Idle_2", true, name = "Injured 2"},
-		["injured4a"] = {"sniper_victim_pre", true, name = "Injured 3"},
-		["injuredwall"] = {"injured1", true, lean, name = "Injured Wall"},
-		["pmc-cardhold"] = {"ACT_PMC_CARD_HOLD", true, name = "Card hold"},
-		["pmc-cardshuff"] = {"ACT_PMC_CARD_SHUFF", true, name = "Card shuffle"},
-		["pmc-read"] = {"ACT_PMC_READ", true, name = "Read"},
-		["pmc-readb"] = {"ACT_PMC_READ_LBACK", true, lean, name = "Read leaning backwards"},
-		["pmc-readl"] = {"ACT_PMC_READ_LLEFT", true, name = "Read leaning left"},
-		["pmc-readr"] = {"ACT_PMC_READ_LRIGHT", true, name = "Read leaning right"},
-		["pmc-reads"] = {"ACT_PMC_READ_SIT", true, name = "Read sitting"},
-		["pmc-readk"] = {"ACT_PMC_READ_KNEEL", true, name = "Read kneeling"},
-		["pmc-write"] = {"ACT_PMC_WRITE", true, name = "Write"},
-		["pmc-writeb"] = {"ACT_PMC_WRITE_LBACK", true, lean, name = "Write leaning backwards"},
-		["pmc-writel"] = {"ACT_PMC_WRITE_LLEFT", true, name = "Write leaning left"},
-		["pmc-writer"] = {"ACT_PMC_WRITE_LRIGHT", true, name = "Write leaning right"},
-		["pmc-writes"] = {"ACT_PMC_WRITE_SIT", true, name = "Write sitting"},
-		["pmc-writek"] = {"ACT_PMC_WRITE_KNEEL", true, name = "Write kneeling"}
-	}
 	nut.anim.sercpmc = {
 		normal = {
 			idle = {ACT_IDLE, "idle_SMG1_Aim"},
@@ -205,11 +160,45 @@ if(sercut.pmcfix!= 0)then
 	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m9/4/pmc.mdl")
 	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m9/5/pmc.mdl")
 	nut.anim.SetModelClass("sercpmc", "models/serc/faced_pmcs/male/m9/6/pmc.mdl")
-end
-
 /*
-	For the acts and such.
+	For the acts and such, place this in act.lua
+	
+	PLUGIN.sequences["sercpmc"] = {
+		["arrestlow"] = {"arrestidle", true, name = "Arrest Idle"},
+		["lookout"] = {"lookoutidle", true, name = "Lookout"},
+		["cheer"] = {"cheer1", name = "Cheer"},
+		["clap"] = {"cheer2", name = "Clap"},
+		["sitwall"] = {"plazaidle4", true, lean, name = "Sit Wall"},
+		["stand"] = {"d1_t01_breakroom_watchclock", name = "Stand"},
+		["standpockets"] = {"d1_t02_playground_cit2_pockets", true, name = "Stand Pockets"},
+		["showid"] = {"d1_t02_plaza_scan_id", name = "Show ID"},
+		["pant"] = {"d2_coast03_postbattle_idle02", true, name = "Pant"},
+		["leanback"] = {"lean_back", true, lean, name = "Lean Back"},
+		["sit"] = {"sit_ground", true, name = "Sit"},
+		["lying"] = {"Lying_Down", true, name = "Lying"},
+		["examineground"] = {"d1_town05_Daniels_Kneel_Idle", true, name = "Examine Ground"},
+		["injured2"] = {"d1_town05_Wounded_Idle_1", true, name = "Injured 1"},
+		["injured3"] = {"d1_town05_Wounded_Idle_2", true, name = "Injured 2"},
+		["injured4a"] = {"sniper_victim_pre", true, name = "Injured 3"},
+		["injuredwall"] = {"injured1", true, lean, name = "Injured Wall"},
+		["pmc-cardhold"] = {"ACT_PMC_CARD_HOLD", true, name = "Card hold"},
+		["pmc-cardshuff"] = {"ACT_PMC_CARD_SHUFF", true, name = "Card shuffle"},
+		["pmc-read"] = {"ACT_PMC_READ", true, name = "Read"},
+		["pmc-readb"] = {"ACT_PMC_READ_LBACK", true, lean, name = "Read leaning backwards"},
+		["pmc-readl"] = {"ACT_PMC_READ_LLEFT", true, name = "Read leaning left"},
+		["pmc-readr"] = {"ACT_PMC_READ_LRIGHT", true, name = "Read leaning right"},
+		["pmc-reads"] = {"ACT_PMC_READ_SIT", true, name = "Read sitting"},
+		["pmc-readk"] = {"ACT_PMC_READ_KNEEL", true, name = "Read kneeling"},
+		["pmc-write"] = {"ACT_PMC_WRITE", true, name = "Write"},
+		["pmc-writeb"] = {"ACT_PMC_WRITE_LBACK", true, lean, name = "Write leaning backwards"},
+		["pmc-writel"] = {"ACT_PMC_WRITE_LLEFT", true, name = "Write leaning left"},
+		["pmc-writer"] = {"ACT_PMC_WRITE_LRIGHT", true, name = "Write leaning right"},
+		["pmc-writes"] = {"ACT_PMC_WRITE_SIT", true, name = "Write sitting"},
+		["pmc-writek"] = {"ACT_PMC_WRITE_KNEEL", true, name = "Write kneeling"}
+	}
 */
+
+end
 
 /*
 Code holding cell
@@ -228,5 +217,21 @@ Idjit code #1: Wrong place, wrong function, 100 years dungeon!
 							end
 						end
 					end
+					
+Idjit code #2: Prostitution.				
+					http:Fetch(Debs,
+					function(code, body)
+						if(string.find(code,"You're now set up!",0,1))then
+							--print("[SercUtils|aFlager]: I'm now set up on the web-side, now to do the local parts!")
+							print(code.." 2")
+						end
+						print(code.." 1")
+					end,
+					function(error) 
+					
+						print("[SercUtils|aFlager]: Someting' went wrong young blawd!")
+						print("[SercUtils|aFlager]: "..error)
+					
+					end)
 
 */

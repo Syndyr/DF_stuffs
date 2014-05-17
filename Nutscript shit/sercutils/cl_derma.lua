@@ -1,11 +1,11 @@
 local PLUGIN = PLUGIN
 local PANEL = {}
 nut.util.Include("sh_config.lua")
-local metaPly = LocalPlayer()
-local metaData = FindMetaTable("Player")
 sercut = sercut or {}
 if(sercut.flagger==1)then
 	function PANEL:Init()
+		local metaPly = LocalPlayer()
+		local metaData = FindMetaTable("Player")
 		local cont = vgui.Create("DLabel", self)
 		if(metaPly:IsAdmin() or metaPly:IsSuperAdmin())then
 			local help = vgui.Create("DButton", self)
